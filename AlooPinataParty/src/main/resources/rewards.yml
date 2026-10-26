@@ -1,0 +1,41 @@
+# ALOO Piñata Party 2.0 - rewards.yml
+# Commands run from the CONSOLE. Placeholders:
+#   %player% %uuid% %damage% %rank% %mob% %event_id% %multiplier%
+#   %mult:<number>%  -> <number> x the mob's reward-multiplier   e.g.  eco give %player% %mult:100%
+# The defaults below only send a chat message so they work on any server.
+# Replace them with your own, e.g.:
+#   - "eco give %player% 100"
+#   - "crate givekey %player% pinata 1"
+rewards:
+  require-victory: true          # false = timeouts also pay out
+  give-on-cancel: false          # admin /pinata stop never pays unless true
+  give-on-manual-events: true    # /pinata start | forcestart events pay rewards
+  minimum-damage: 1.0            # participation threshold for ALL reward tiers
+  give-to-offline-players: false
+  commands-per-tick: 10          # spreads command dispatch so rewards never lag the server
+
+  participation:
+    enabled: true
+    commands:
+      - "tell %player% [ALOO SMP] Thanks for joining the Piñata Party! You dealt %damage% damage (rank #%rank%)."
+
+  top-damage:
+    enabled: true
+    commands:
+      - "tell %player% [ALOO SMP] You dealt the MOST damage to the %mob% Piñata - great job!"
+
+  leaderboard:
+    enabled: true
+    rewards:
+      "2":
+        commands:
+          - "tell %player% [ALOO SMP] 2nd place in the Piñata Party!"
+      "3":
+        commands:
+          - "tell %player% [ALOO SMP] 3rd place in the Piñata Party!"
+      "4":
+        commands:
+          - "tell %player% [ALOO SMP] 4th place in the Piñata Party!"
+      "5":
+        commands:
+          - "tell %player% [ALOO SMP] 5th place in the Piñata Party!"

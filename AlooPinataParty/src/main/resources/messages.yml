@@ -1,0 +1,148 @@
+# ALOO Piñata Party 2.0 - messages.yml
+# Colours: &a &l ... and hex &#ff8800. Placeholders are written %like_this%.
+# Missing keys fall back to the built-in defaults, so updates never break old files.
+prefix: "&6&l[ALOO SMP] &r"
+no-permission: "&cYou do not have permission to do that."
+player-only: "&cOnly players can use this command."
+unknown-subcommand: "&cUnknown subcommand. Use &e/pinata help&c."
+
+usage:
+  start: "&cUsage: &e/pinata start [countdownSeconds]"
+  forcestart: "&cUsage: &e/pinata forcestart <mob>"
+  sethealth: "&cUsage: &e/pinata sethealth <mob> <health>"
+  schedule: "&cUsage: &e/pinata schedule [interval <hours> | next <minutes> | enable | disable | reset]"
+  testrewards: "&cUsage: &e/pinata testrewards [player] [rank 1-5] [execute]"
+
+help:
+  header: "&6&l=== ALOO Piñata Party 2.0 ==="
+  line: "&e%usage% &7- &f%desc%"
+  desc:
+    help: "Show this help"
+    wand: "Get the arena selection wand"
+    setarena: "Save the wand selection as the arena"
+    setspawn: "Save your position as the Piñata spawn"
+    arena: "Show arena and spawn info"
+    start: "Start the event with a countdown"
+    stop: "Cancel the countdown or running event"
+    schedule: "Show or change the automatic schedule"
+    reload: "Reload all configuration files"
+    status: "Show event status"
+    forcestart: "Start immediately with a chosen mob"
+    sethealth: "Change a mob's health in mobs.yml"
+    testrewards: "Preview or run the reward commands"
+    join: "Teleport to the running Piñata Party"
+
+wand:
+  name: "&6&lALOO Arena Wand"
+  lore:
+    - "&7Right-click a block: &fPosition 1"
+    - "&7Left-click a block: &fPosition 2"
+    - "&7Then run &e/pinata setarena"
+  given: "&aYou received the arena wand."
+  pos1: "&aPosition 1 set: &f%world% %x%, %y%, %z%"
+  pos2: "&aPosition 2 set: &f%world% %x%, %y%, %z%"
+  both-set: "&7Selection ready (&f%volume%&7 blocks). Run &e/pinata setarena&7 to save it."
+
+arena:
+  need-both: "&cSelect both positions with the wand first (right-click = pos 1, left-click = pos 2)."
+  different-worlds: "&cBoth positions must be in the same world."
+  world-unloaded: "&cThat world is not loaded."
+  needs-confirm: "&cAn arena already exists. Run &e/pinata setarena confirm&c to overwrite it."
+  saved: "&aArena saved: &f%world% &7(%volume% blocks)"
+  spawn-outside-warning: "&eWarning: the saved Piñata spawn is outside this arena. Run &6/pinata setspawn confirm&e inside it."
+  not-set: "&cNo arena is configured yet."
+  info:
+    - "&6&lArena"
+    - "&7World: &f%world%"
+    - "&7Min: &f%min%"
+    - "&7Max: &f%max%"
+    - "&7Volume: &f%volume% blocks"
+    - "&7Spawn: &f%spawn%"
+
+spawn:
+  saved: "&aPiñata spawn saved: &f%world% %x%, %y%, %z%"
+  outside-arena: "&cThe spawn must be inside the saved arena."
+  needs-confirm: "&cA spawn already exists. Run &e/pinata setspawn confirm&c to overwrite it."
+
+event:
+  already-running: "&cAn event is already running."
+  not-running: "&cNo event or countdown is running."
+  not-ready: "&cSet the arena and spawn first (&e/pinata wand&c, &e/pinata setarena&c, &e/pinata setspawn&c)."
+  no-mobs: "&cNo enabled mobs in mobs.yml."
+  started-manual: "&aEvent started."
+  countdown-started: "&aCountdown started (%time%)."
+  countdown-cancelled: "&cThe Piñata Party countdown was cancelled."
+  cancelled-active: "&cThe Piñata Party was cancelled by an admin."
+  timeout: "&cTime is up! The %mob% Piñata escaped."
+  spawn-failed: "&cThe Piñata could not be spawned. Event cancelled."
+  error-aborted: "&cThe Piñata Party was stopped because of an internal error."
+
+announce:
+  countdown: "&e&lPIÑATA PARTY &fstarts in &e%time%&f!"
+  started: "&6&lThe %name% &6&lhas appeared! Smash it for rewards!"
+  join-button: "&a&l[CLICK TO JOIN]"
+  join-hover: "&eClick to teleport to the Piñata Party\n&7(%seconds%s delay - don't move!)"
+  final-title: "&6&l%seconds%"
+  final-subtitle: "&ePiñata Party is about to start!"
+
+leaderboard:
+  header: "&6&l[ALOO SMP] &e&lPIÑATA PARTY COMPLETED!"
+  line: "&6#%rank% &f%player% &7- &e%damage% Damage"
+  winner: "&aWinner: &f%player% &7with &e%damage% &7damage!"
+  nobody: "&7Nobody dealt damage this time."
+  total: "&7Total damage: &f%total% &8| &7Duration: &f%duration%"
+
+teleport:
+  disabled: "&cTeleporting to the event is disabled."
+  not-available: "&cThere is no Piñata Party you can join right now."
+  pending: "&cYou are already being teleported."
+  combat: "&cYou cannot teleport while in combat."
+  start: "&eTeleporting in &6%seconds%&e seconds... don't move!"
+  tick: "&eTeleporting in &6%seconds%&e..."
+  cancelled-moved: "&cTeleport cancelled because you moved."
+  cancelled: "&cTeleport cancelled."
+  event-ended: "&cTeleport cancelled - the event ended."
+  success: "&aWelcome to the Piñata Party! Hit the Piñata!"
+  unsafe: "&cThe destination is not safe right now. Ask an admin to check the spawn."
+  failed: "&cTeleport failed."
+
+schedule:
+  show:
+    - "&6&lSchedule"
+    - "&7Automatic events: &f%enabled%"
+    - "&7Interval: &f%interval% hours"
+    - "&7Next event: &f%next% &7(in &f%remaining%&7)"
+  interval-set: "&aInterval set to &f%hours% &ahours. Next event: &f%next%"
+  enabled: "&aAutomatic events enabled. Next event: &f%next%"
+  disabled: "&cAutomatic events disabled."
+  next-set: "&aNext event in &f%minutes% &aminutes (&f%next%&a)."
+  reset: "&aSchedule reset. Next event: &f%next%"
+  invalid: "&cInvalid number."
+
+status:
+  lines:
+    - "&6&lPiñata Party status"
+    - "&7State: &f%state% &8| &7Event id: &f%eventid%"
+    - "&7Mob: &f%mob% &8| &7HP: &f%hp%"
+    - "&7Participants: &f%participants% &8| &7Total damage: &f%total%"
+    - "&7Time left: &f%remaining%"
+    - "&7Next scheduled: &f%next%"
+    - "&7Arena: &f%arena% &8| &7Spawn: &f%spawn%"
+
+reload:
+  done: "&aConfiguration reloaded."
+  failed: "&cReload failed - see the console."
+
+sethealth:
+  done: "&aHealth of &f%mob% &aset to &f%health%&a (applies to the next event)."
+  unknown-mob: "&cUnknown mob. Available: &f%mobs%"
+  invalid: "&cHealth must be a number between 1 and %max%."
+
+testrewards:
+  none: "&cNothing to run for that rank."
+  preview-header: "&6Reward preview for &f%player% &6(rank #%rank%) - add &eexecute&6 to really run them:"
+  preview-line: "&7- &f%command%"
+  executed: "&aQueued &f%count% &areward command(s) for &f%player%."
+
+protection:
+  blocked: "&cPvP is disabled in the Piñata arena."

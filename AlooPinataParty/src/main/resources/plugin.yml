@@ -1,0 +1,47 @@
+name: AlooPinataParty
+version: '${project.version}'
+main: com.aloo.pinata.AlooPinataParty
+api-version: '1.21'
+author: ALOO SMP
+description: Automatic server-wide Pinata Party boss event for ALOO SMP
+load: POSTWORLD
+
+commands:
+  pinata:
+    description: ALOO Pinata Party main command
+    usage: /<command> help
+    aliases: [pinataparty, aloopinata]
+
+permissions:
+  aloopinata.admin:
+    description: Full access to every Pinata Party command
+    default: op
+    children:
+      aloopinata.wand: true
+      aloopinata.start: true
+      aloopinata.stop: true
+      aloopinata.reload: true
+      aloopinata.status: true
+      aloopinata.participate: true
+      aloopinata.teleport.bypass: true
+  aloopinata.wand:
+    description: Use the arena selection wand and setarena/setspawn/arena
+    default: op
+  aloopinata.start:
+    description: start, forcestart
+    default: op
+  aloopinata.stop:
+    description: stop
+    default: op
+  aloopinata.reload:
+    description: reload
+    default: op
+  aloopinata.status:
+    description: status and schedule (read only)
+    default: true
+  aloopinata.participate:
+    description: See Pinata bossbars/announcements and use /pinata join
+    default: true
+  aloopinata.teleport.bypass:
+    description: Skip the teleport delay
+    default: false

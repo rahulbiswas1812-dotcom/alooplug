@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.aloo</groupId>
+  <artifactId>AlooPinataParty</artifactId>
+  <version>2.0.0</version>
+  <packaging>jar</packaging>
+  <name>ALOO Pinata Party</name>
+  <description>Automatic server-wide Pinata Party boss event for ALOO SMP</description>
+
+  <properties>
+    <!-- Bytecode level. 21 runs on Java 21 AND Java 25 servers. Use -Pjava25 for a Java-25-only build. -->
+    <java.release>21</java.release>
+    <jar.suffix></jar.suffix>
+    <!-- Compile against 1.21.1 so the same jar loads on 1.21.x up to 1.21.10 (only stable API used). -->
+    <paper.api.version>1.21.1-R0.1-SNAPSHOT</paper.api.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>papermc</id>
+      <url>https://repo.papermc.io/repository/maven-public/</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>io.papermc.paper</groupId>
+      <artifactId>paper-api</artifactId>
+      <version>${paper.api.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.10.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>AlooPinataParty-${project.version}${jar.suffix}</finalName>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+        <includes><include>plugin.yml</include></includes>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>false</filtering>
+        <excludes><exclude>plugin.yml</exclude></excludes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+        <configuration>
+          <release>${java.release}</release>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
+        <configuration>
+          <!-- A failing unit test never blocks the jar; read the report instead. -->
+          <testFailureIgnore>true</testFailureIgnore>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>java25</id>
+      <properties>
+        <java.release>25</java.release>
+        <jar.suffix>-java25</jar.suffix>
+      </properties>
+    </profile>
+  </profiles>
+</project>

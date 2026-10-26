@@ -1,0 +1,134 @@
+# ============================================================
+#  ALOO Piñata Party 2.0 - config.yml
+#  Reload with /pinata reload (no restart needed).
+# ============================================================
+
+schedule:
+  enabled: true
+  # Hours between automatic events (decimals allowed, e.g. 0.5). Can also be changed in-game:
+  # /pinata schedule interval <hours>
+  interval-hours: 3
+  # Countdown (bossbar + first announcement) starts this many minutes before the event.
+  announcement-minutes: 10
+  # Extra chat announcements (minutes before start). Must be <= announcement-minutes.
+  additional-announcements:
+    - 5
+    - 1
+  # Title/sound countdown for the last N seconds (0 disables).
+  final-countdown-seconds: 10
+  # Hard time limit for the active Piñata fight.
+  event-duration-minutes: 10
+  # "server" = the server's timezone, or any Java zone id e.g. "Asia/Kolkata". Used for display only.
+  timezone: "server"
+  # What to do if the saved next-event time passed while the server was offline.
+  #   RESCHEDULE = next event is one full interval from now (no event storm)
+  #   CATCH_UP   = run ONE event after catch-up-delay-minutes
+  missed-event-policy: RESCHEDULE
+  catch-up-delay-minutes: 15
+  # Countdown used by /pinata start (0 = start immediately).
+  manual-countdown-seconds: 60
+
+bossbar:
+  countdown:
+    title: "&6&lALOO PIÑATA PARTY &fSTARTS IN &e%time%"   # %time% = mm:ss
+    color: YELLOW        # PINK BLUE RED GREEN YELLOW PURPLE WHITE
+    style: PROGRESS      # PROGRESS NOTCHED_6 NOTCHED_10 NOTCHED_12 NOTCHED_20
+  active:
+    # %mob% %name% %hp% %max% %percent%
+    title: "&6&lALOO PIÑATA PARTY &8| &f%mob% &8| &cHP: &f%hp%&7/&f%max%"
+    color: RED
+    style: PROGRESS
+
+teleport:
+  enabled: true
+  delay-seconds: 3
+  cancel-on-move: true
+  allow-during-countdown: true
+  # Refuse /pinata join for N seconds after PvP damage (0 = off).
+  block-in-combat-seconds: 0
+
+pinata:
+  glowing: true
+  drops: false
+  # Only direct player hits / player-shot projectiles can hurt the Piñata.
+  invulnerable-to-non-players: true
+  # Creative players can hit it but get no damage credit unless this is true (handy for testing).
+  count-creative-players: false
+  # If true, only players standing inside the arena get damage credit.
+  require-attacker-in-arena: false
+
+effects:
+  enabled: true
+  mob-buff-interval-seconds: 30
+  player-debuff-cooldown-seconds: 5
+  # Safety caps applied to every configured effect.
+  max-duration-seconds: 30
+  max-amplifier: 2
+  # Any vanilla effect id works (SPEED, JUMP_BOOST, RESISTANCE, REGENERATION, SLOW_FALLING, ...)
+  mob-buffs:
+    SPEED:
+      enabled: true
+      chance-percent: 20
+      duration-seconds: 8
+      amplifier: 0
+    JUMP_BOOST:
+      enabled: true
+      chance-percent: 15
+      duration-seconds: 6
+      amplifier: 0
+    RESISTANCE:
+      enabled: true
+      chance-percent: 10
+      duration-seconds: 5
+      amplifier: 0
+    REGENERATION:
+      enabled: true
+      chance-percent: 10
+      duration-seconds: 5
+      amplifier: 0
+    SLOW_FALLING:
+      enabled: true
+      chance-percent: 10
+      duration-seconds: 6
+      amplifier: 0
+  # Applied to a player only after they land valid damage on the Piñata.
+  player-debuffs:
+    SLOWNESS:
+      enabled: true
+      chance-percent: 10
+      duration-seconds: 3
+      amplifier: 0
+    POISON:
+      enabled: true
+      chance-percent: 5
+      duration-seconds: 3
+      amplifier: 0
+    NAUSEA:
+      enabled: true
+      chance-percent: 5
+      duration-seconds: 3
+      amplifier: 0
+
+protection:
+  # Players cannot damage other players in the arena while the event runs.
+  enabled: true
+  during-countdown: false
+  # Also block attacks that START inside the arena at targets outside it.
+  block-outgoing: true
+  # Zero the effect of splash potions thrown by players at protected players.
+  block-splash-potions: true
+  # Keep the protection on all the time (not only during events).
+  persistent-arena-protection: false
+
+ending:
+  leaderboard-size: 5
+  announce-leaderboard-on-timeout: true
+  show-title: true
+  victory-sounds:
+    - "entity.player.levelup"
+    - "ui.toast.challenge_complete"
+  lightning-effects: 3       # harmless visual lightning, 0-10
+
+history:
+  enabled: false             # writes history.yml (async, once per event)
+  max-entries: 50

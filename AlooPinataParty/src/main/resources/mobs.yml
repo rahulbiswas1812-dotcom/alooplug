@@ -1,0 +1,73 @@
+# ALOO Piñata Party 2.0 - mobs.yml
+# Every mob is configured independently. Add more by copying a block (entity-type must be a mob).
+#   enabled                 include in the random pool
+#   entity-type             vanilla entity id (defaults to the key)
+#   name                    display name (& colour codes / &#rrggbb)
+#   health / max-health     health at spawn / maximum (max-health optional, defaults to health). Cap 1024.
+#   spawn-sounds            vanilla sound ids played when it appears
+#   bossbar.name/color/style  override the bossbar label/colour for this mob
+#   buff-chances            per-mob override of mob-buff chance-percent (config.yml effects)
+#   reward-multiplier       exposed as %multiplier% and used by %mult:<n>% in reward commands
+#   player-damage-multiplier  scales damage the Piñata deals to players (1.0 = vanilla)
+#   disable-sonic-boom      cancels the Warden's unblockable sonic boom
+#   remove-goals            AI goals removed (panic stops fleeing - needed for the llama)
+mobs:
+  WARDEN:
+    enabled: true
+    name: "&5&lALOO WARDEN PIÑATA"
+    health: 300
+    spawn-sounds: ["entity.warden.emerge"]
+    bossbar: {name: "WARDEN", color: PURPLE, style: PROGRESS}
+    buff-chances: {}
+    reward-multiplier: 1.5
+    player-damage-multiplier: 0.35
+    disable-sonic-boom: true
+    remove-goals: [panic]
+
+  LLAMA:
+    enabled: true
+    name: "&e&lALOO LLAMA PIÑATA"
+    health: 175
+    spawn-sounds: ["entity.llama.angry"]
+    bossbar: {name: "LLAMA", color: YELLOW, style: PROGRESS}
+    buff-chances: {}
+    reward-multiplier: 1.0
+    player-damage-multiplier: 1.0
+    disable-sonic-boom: false
+    remove-goals: [panic]
+
+  ZOMBIE:
+    enabled: true
+    name: "&c&lALOO ZOMBIE PIÑATA"
+    health: 200
+    spawn-sounds: ["entity.zombie.ambient"]
+    bossbar: {name: "ZOMBIE", color: GREEN, style: PROGRESS}
+    buff-chances: {}
+    reward-multiplier: 1.0
+    player-damage-multiplier: 1.0
+    disable-sonic-boom: false
+    remove-goals: [panic]
+
+  HOGLIN:
+    enabled: true
+    name: "&6&lALOO HOGLIN PIÑATA"
+    health: 250
+    spawn-sounds: ["entity.hoglin.angry"]
+    bossbar: {name: "HOGLIN", color: RED, style: PROGRESS}
+    buff-chances: {}
+    reward-multiplier: 1.25
+    player-damage-multiplier: 0.6
+    disable-sonic-boom: false
+    remove-goals: [panic]
+
+  WITHER_SKELETON:
+    enabled: true
+    name: "&8&lALOO WITHER PIÑATA"
+    health: 225
+    spawn-sounds: ["entity.wither_skeleton.ambient"]
+    bossbar: {name: "WITHER SKELETON", color: WHITE, style: PROGRESS}
+    buff-chances: {}
+    reward-multiplier: 1.25
+    player-damage-multiplier: 0.8
+    disable-sonic-boom: false
+    remove-goals: [panic]

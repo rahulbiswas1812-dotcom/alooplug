@@ -1,0 +1,12 @@
+# Managed by /pinata setarena and /pinata setspawn - you normally never edit this by hand.
+arena:
+  world: ""
+  min: {x: 0, y: 0, z: 0}
+  max: {x: 0, y: 0, z: 0}
+spawn:
+  world: ""
+  x: 0.0
+  y: 0.0
+  z: 0.0
+  yaw: 0.0
+  pitch: 0.0
